@@ -1,0 +1,35 @@
+# connector.yaml for the Twilio-authored MCP shim.
+#
+# This connector advertises Twilio's MCP server (send_sms, lookup_phone_number,
+# list_recent) to the AgenticProcedure controller. Identity is the
+# tunnel.name below; on first connect the controller mints a row and returns
+# a registrationToken, persisted in .connector-state.json.
+#
+# Pair this with `author: 'twilio'` on the controller's connector record so
+# the resulting tools surface as twilio.* (not customer.*).
+#
+# Vars like ${CONTROLLER_URL} interpolate from .env.
+# TWILIO_* secrets live in mcp/twilio-mcp-server/.env and are loaded only
+# into that child's process.
+
+tunnel:
+  controller_url: ${CONTROLLER_URL}
+  ws_url: ${CONTROLLER_WS_URL:-}
+  # Customer-chosen identity claim. Operators on the controller side should
+  # provision a connector with this exact name and author='twilio'.
+  name: twilio-platform
+  auth_token: ${TUNNEL_AUTH_TOKEN:-}
+  environment: dev
+
+mcp_servers:
+  - name: twilio
+    transport: http
+    dir: ./mcp/twilio-mcp-server
+
+policy:
+  fail_mode: fail_fast
+  log_tool_args: redacted
+  max_concurrent_calls: 64
+  discovery_interval_ms: 30000
+  heartbeat_interval_ms: 1500
+  tool_timeout_ms: 5000

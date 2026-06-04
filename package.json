@@ -1,0 +1,15 @@
+{
+  "name": "@mcp-shim/twilio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Twilio-authored MCP shim. Bundles a Twilio MCP server (send_sms, lookup_phone_number, list_recent) and the @mcp-shim/connector binary that dials a controller and serves them.",
+  "scripts": {
+    "start": "./scripts/start.sh"
+  },
+  "dependencies": {
+    "@mcp-shim/connector": "file:../mcp-shim/packages/connector",
+    "twilio": "^5.3.0",
+    "zod": "^3.23.8"
+  }
+}
