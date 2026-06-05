@@ -14,7 +14,6 @@
 
 tunnel:
   controller_url: ${CONTROLLER_URL}
-  ws_url: ${CONTROLLER_WS_URL:-}
   # Customer-chosen identity claim. Operators on the controller side should
   # provision a connector with this exact name and author='twilio'.
   name: twilio-platform
