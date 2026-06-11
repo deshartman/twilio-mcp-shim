@@ -24,7 +24,7 @@ npm install                              # workspace install (installs tsx for t
 (cd examples/twilio-mcp-server && npm install)  # twilio SDK lives here, not in the workspace
 
 cp examples/twilio-mcp-server/.env.example examples/twilio-mcp-server/.env
-# Fill in TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM.
+# Fill in TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM_NUMBER.
 ```
 
 The entry already exists in `packages/connector/connector.yaml.example`:
